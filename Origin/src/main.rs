@@ -6,12 +6,13 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 16:07:44 by descamil          #+#    #+#             */
-/*   Updated: 2025/07/03 19:05:19 by descamil         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:15:23 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 mod ascii;
 mod strings;
+use strings::MyStr;
 
 fn main()
 {
@@ -46,6 +47,12 @@ fn main()
 	println!("Contain: \"llo\" in {} --> {}", text, contain1);
 	println!("Contain: \"hol\" in {} --> {}", text, contain2);
 	println!();
+
+
+	let s = MyStr::new("Hola mundo");
+	println!("{:?}", s.find("mun")); // Some(5)
+	println!("{:?}", s.find("x"));   // None
+	
 
 
 	let test_chars: [char; 5] = ['A', '1', ' ', 'z', '?'];

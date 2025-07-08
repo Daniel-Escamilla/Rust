@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 16:07:40 by descamil          #+#    #+#             */
-/*   Updated: 2025/07/03 19:07:21 by descamil         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:15:05 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,21 +97,45 @@ pub fn end_with(line: &String, suffix: &String) -> bool
 	chars[chars.len() - suffix.len()..] == suffix_chars
 }
 
-pub fn contain(line: &String, look: &String) -> bool
-{
+pub fn contain(line: &String, look: &String) -> bool {
 	let chars: Vec<char> = line.chars().collect();
 	let look_chars: Vec<char> = look.chars().collect();
 
-	if chars.len() < look_chars.len()
-	{
+	if chars.len() < look_chars.len() {
 		return false;
 	}
-	for i in 0..=chars.len() - look_chars.len()
-	{
-		if chars[i..look_chars.len() + i] == look_chars
-		{
+	for i in 0..=chars.len() - look_chars.len() {
+		if chars[i..look_chars.len() + i] == look_chars {
 			return true;
 		}
 	}
+	// chars.iter().find()
 	return false;
+}
+
+
+pub struct MyStr<'a> {
+    content: &'a str,
+}
+
+impl<'a> MyStr<'a> {
+    pub fn new(s: &'a str) -> Self {
+        Self { content: s }
+    }
+
+    pub fn find(&self, pattern: &str) -> Option<usize> {
+        if pattern.is_empty() {
+            return Some(0);
+        }
+
+        let pat_len = pattern.len();
+
+        for (i, _) in self.content.char_indices() {
+            if self.content.get(i..i + pat_len) == Some(pattern) {
+                return Some(i);
+            }
+        }
+
+        None
+    }
 }
