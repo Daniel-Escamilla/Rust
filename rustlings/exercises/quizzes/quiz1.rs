@@ -12,7 +12,11 @@
 // the quantity bought.
 fn calculate_price_of_apples(order: i32) -> i32
 {
-    if order <= 40 { order * 2 } else { order }
+    if order <= 40 {
+        order * 2
+    } else { 
+        order
+    }
 }
 
 fn main() {
