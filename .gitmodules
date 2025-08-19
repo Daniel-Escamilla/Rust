@@ -1,3 +1,9 @@
 [submodule "Advent-of-Code"]
 	path = Advent-of-Code
 	url = https://github.com/Daniel-Escamilla/Advent-of-Code.git
+[submodule "Mini-Nmap"]
+	path = Mini-Nmap
+	url = https://github.com/Daniel-Escamilla/Mini-Nmap
+[submodule "Starship"]
+	path = Starship
+	url = https://github.com/Daniel-Escamilla/Starship
