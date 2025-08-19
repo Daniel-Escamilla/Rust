@@ -17,36 +17,32 @@
 //   the first element is the string, the second one is the command.
 // - The output element is going to be a vector of strings.
 
-enum Command {
+pub enum Command {
     Uppercase,
     Trim,
     Append(usize),
 }
 
-mod my_module {
+pub mod my_module {
     use super::Command;
 
-    pub fn transformer(inputs: Vec<(String, Command)>) -> Vec<String> {
-        let mut output: Vec<String> = vec![];
-
-        for (i, input) in inputs.into_iter().enumerate() {
-            match input.1 {
-                Command::Uppercase => {
-                    output.insert(i, input.0.to_uppercase());
+    // TODO: Complete the function as described above.
+    pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
+        input
+            .into_iter()
+            .map(|(mut text, cmd)| {
+                match cmd {
+                    Command::Append(times) => {
+                        for _ in 0..times {
+                            text.push_str("bar");
+                        }
+                        text
+                    },
+                    Command::Uppercase => text.to_uppercase(),
+                    Command::Trim => text.trim().to_string(),
                 }
-                Command::Trim => {
-                    output.insert(i, input.0.trim().to_string());
-                }
-                Command::Append(number) => {
-                    let mut result = input.0;
-                    for _ in 0..number {
-                        result.push_str("bar");
-                    }
-                    output.insert(i, result);
-                }
-            }
-        }
-        output
+            })
+            .collect()
     }
 }
 

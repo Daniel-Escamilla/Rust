@@ -10,18 +10,11 @@ enum Message {
         width: i32,
         height: i32,
     },
-    Move (
-        Point
-    ),
-    Echo (
-        String
-    ),
-    ChangeColor (
-        i32,
-        i32,
-        i32,
-    ), 
+    Move(Point),
+    Echo(String),
+    ChangeColor(i32, i32, i32),
     Quit,
+
     // TODO: Define the different variants used below.
 }
 
