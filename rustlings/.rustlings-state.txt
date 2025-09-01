@@ -1,10 +1,6 @@
 DON'T EDIT THIS FILE!
 
-<<<<<<< HEAD
-quiz2
-=======
-errors1
->>>>>>> ac5584dc9aa178fe66a6eb517fca8c6d4d386e92
+generics1
 
 intro1
 intro2
@@ -51,12 +47,14 @@ modules2
 modules3
 hashmaps1
 hashmaps2
-<<<<<<< HEAD
-hashmaps3
-=======
 hashmaps3
 quiz2
 options1
 options2
 options3
->>>>>>> ac5584dc9aa178fe66a6eb517fca8c6d4d386e92
+errors1
+errors2
+errors3
+errors4
+errors5
+errors6
