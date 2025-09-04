@@ -20,7 +20,7 @@
 use std::{sync::Arc, thread};
 
 fn main() {
-    let numbers: Vec<_> = (0..100u32).collect();
+    let numbers: Vec<u32> = (0..100u32).collect();
 
     // TODO: Define `shared_numbers` by using `Arc`.
     let shared_numbers = Arc::new(numbers);
