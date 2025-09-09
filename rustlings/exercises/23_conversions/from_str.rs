@@ -25,6 +25,15 @@ enum ParsePersonError {
     ParseInt(ParseIntError),
 }
 
+impl Default for Person {
+    fn default() -> Self {
+        Self {
+            name: String::from("John"),
+            age: 30,
+        }
+    }
+}
+
 // TODO: Complete this `FromStr` implementation to be able to parse a `Person`
 // out of a string in the form of "Mark,20".
 // Note that you'll need to parse the age component into a `u8` with something
@@ -41,7 +50,24 @@ enum ParsePersonError {
 impl FromStr for Person {
     type Err = ParsePersonError;
 
-    fn from_str(s: &str) -> Result<Self, Self::Err> {}
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let mut person = Person::default();
+        let binding = s.to_string();
+        let atributes = binding.split(',').collect::<Vec<&str>>();
+        if atributes.len() != 2 {
+            return Err(ParsePersonError::BadLen);
+        }
+        let at_name = atributes[0].to_string();
+        if  at_name.is_empty() {
+            return Err(ParsePersonError::NoName);
+        }
+        person.name = at_name;
+        match atributes[1].parse::<u8>() {
+            Ok(age) => person.age = age,
+            Err(error) => return Err(ParsePersonError::ParseInt(error))
+        }
+        Ok(person)
+    }
 }
 
 fn main() {
